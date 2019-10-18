@@ -15,20 +15,21 @@
       <h3 id="middle">TrailWeather</h3>
       <a href="/search">Search Locations</a>
       <% if (currentUser) { %>
-        <p class="login">Logged in as <a href="/profile"><%= currentUser.name %></a></p>
+        <p class="login">Logged in as <a href="/profile"><%= currentUser.name %> | </a></p>
       <% } else { %>
-        <a href="/auth/login">Login</a>
+        <a href="/auth/login">Login |</a>
       <% } %>  
-      <a href="/auth/login">Login</a> | 
       <a href="/auth/signup">Sign Up</a>
     </nav>
 
     <main class="container">
-      <h1>Authentication</h1>
-      <%- JSON.stringify(currentUser) %>
       <% include partials/alerts %>
       <%- body %>
     </main>
+
+    <footer>
+      <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+    </footer>
 
   </body>
 </html>

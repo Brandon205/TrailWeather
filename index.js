@@ -70,7 +70,7 @@ app.get('/profile', isLoggedIn, function(req, res) {
 });
 
 app.use('/auth', require('./controllers/auth'));
-app.use('/', require('./controllers/app'));
+app.use('/', require('./controllers/api'));
 app.use('/locations', require('./controllers/locations'));
 app.use('/trails', require('./controllers/trails'));
 
