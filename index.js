@@ -62,7 +62,7 @@ app.use(function(req, res, next) { // Will add alerts and currentUser to any EJS
 });
 
 app.get('/', function(req, res) {
-  res.render('index');
+  res.render('pages/index.ejs');
 });
 
 app.get('/profile', isLoggedIn, function(req, res) {
@@ -70,6 +70,9 @@ app.get('/profile', isLoggedIn, function(req, res) {
 });
 
 app.use('/auth', require('./controllers/auth'));
+app.use('/', require('./controllers/app'));
+app.use('/locations', require('./controllers/locations'));
+app.use('/trails', require('./controllers/trails'));
 
 var server = app.listen(process.env.PORT || 3000);
 

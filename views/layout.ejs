@@ -3,19 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Authentication</title>
-
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+    <title>TrailWeather</title>
+    <link rel="stylesheet" href="../public/css/style.css">
   </head>
   <body>
-    <div class="container">
+
+    <nav>
+      <a href="/">Home</a> | 
+      <a href="/locations">Your Locations</a> |
+      <a href="/trails">Your Trails</a> 
+      <h3 id="middle">TrailWeather</h3>
+      <a href="/search">Search Locations</a>
+      <% if (currentUser) { %>
+        <p class="login">Logged in as <a href="/profile"><%= currentUser.name %></a></p>
+      <% } else { %>
+        <a href="/auth/login">Login</a>
+      <% } %>  
+      <a href="/auth/login">Login</a> | 
+      <a href="/auth/signup">Sign Up</a>
+    </nav>
+
+    <main class="container">
       <h1>Authentication</h1>
       <%- JSON.stringify(currentUser) %>
       <% include partials/alerts %>
       <%- body %>
-    </div>
+    </main>
 
-    <!-- <script src="//code.jquery.com/jquery.js"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
   </body>
 </html>
