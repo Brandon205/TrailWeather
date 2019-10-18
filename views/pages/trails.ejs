@@ -1,0 +1,9 @@
+<% trails.forEach(function(trail) { %>
+  <div>
+  <h3><a href="trails/<%= trail.idnum %>"><%= trail.name %></a></h3>
+
+  <form action="/trails/<%= trail.idnum %>/?_method=DELETE" method="POST">
+    <input type="submit" value="Remove from List">
+  </form>
+</div>
+<% }); %>

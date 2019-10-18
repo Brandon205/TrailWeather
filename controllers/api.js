@@ -11,21 +11,21 @@ const mb = mbClient({ accessToken: process.env.MAPBOX_KEY });
 const mbGeocode = require('@mapbox/mapbox-sdk/services/geocoding');
 const geocode = mbGeocode(mb);
 
-router.get('/home', function(req, res) {
+router.get('/home', function(req, res) { // Shows the main home page
   res.render('/pages/index');
 });
 
-router.get('/search', function(req, res) {
+router.get('/search', function(req, res) { // Shows a from for searching locations
   res.render('pages/search');
 });
 
-router.get('/results', function(req, res) {
+router.get('/results', function(req, res) { // Will take search items from query --> lat & long
   geocode.forwardGeocode({
     query: `${req.query.city}, ${req.query.state}`,
     types: ['place'],
     countries: ['us']
   }).send().then(function(response) {
-    let results = response.body.features.map(result => {
+    let results = response.body.features.map(result => { // Maps mapbox data to "results" --> render with all the found data
       return {
         name: result.place_name,
         lat: result.center[1],
@@ -36,27 +36,12 @@ router.get('/results', function(req, res) {
   });
 });
 
-// router.get('/lookup', function(req, res) {
-//   let locName = req.body.city;
-//   axios.get(`${dsUrl}/${process.env.DARK_SKY_KEY}/${req.query.lat},${req.query.long}`)
-//   .then(function(weatherInfo) {
-     // eslint-disable-next-line max-len
-//     axios.get(`${hpUrl}/get-trails?lat=${req.query.lat}&lon=${req.query.long}&maxDistance=10&key=${process.env.HIKING_PROJECT_KEY}`)
-//     .then(function(trailInfo) {
-       // eslint-disable-next-line max-len
-//       res.render('pages/lookup', { weatherInfo: weatherInfo.data, trails: trailInfo.data.trails, locName });
-//     });
-//   });
-// });
-
 router.post('/lookup', function(req, res) { // NOT RESTful but needed to keep the url a bit cleaner
   let locName = req.body.city;
   axios.get(`${dsUrl}/${process.env.DARK_SKY_KEY}/${req.body.lat},${req.body.long}`)
   .then(function(weatherInfo) {
-    // eslint-disable-next-line max-len
     axios.get(`${hpUrl}/get-trails?lat=${req.body.lat}&lon=${req.body.long}&maxDistance=10&key=${process.env.HIKING_PROJECT_KEY}`)
     .then(function(trailInfo) {
-      // eslint-disable-next-line max-len
       res.render('pages/lookup', { weatherInfo: weatherInfo.data, trails: trailInfo.data.trails, locName });
     });
   });

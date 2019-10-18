@@ -27,7 +27,6 @@ router.post('/', function(req, res) {
 // DELETE to /locations > remove the correct location from the users location list
 router.delete('/:id', function(req, res) {
   let num = req.params.id;
-  console.log(`😀 ${num}`);
   db.location.destroy({
     where: {
       lat: num

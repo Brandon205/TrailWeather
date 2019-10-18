@@ -14,3 +14,7 @@ nav {
 footer {
   float: right;
 }
+
+.inline {
+  display: inline-block;
+}

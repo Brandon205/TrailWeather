@@ -7,5 +7,11 @@
     <form action="/locations/<%= location.lat %>/?_method=DELETE" method="POST">
       <input type="submit" value="Delete">
     </form>
+    <form action="/lookup" method="POST">
+      <input type="hidden" name="city" value="<%= location.city %>">
+      <input type="hidden" name="lat" value="<%= location.lat %>">
+      <input type="hidden" name="long" value="<%= location.long %>">
+      <input type="submit" value="View Details">
+    </form>
   </div>
 <% }) %>

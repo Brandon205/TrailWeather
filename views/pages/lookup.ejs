@@ -10,5 +10,10 @@
 </form>
 
 <% trails.forEach(function(trail) { %>
-  <p><%= trail.name %></p>
+  <p class="inline"><%= trail.name %></p>
+  <form action="/trails" method="POST">
+    <input type="hidden" name="name" value="<%= trail.name %>">
+    <input type="hidden" name="idnum" value="<%= trail.id %>">
+    <input type="submit" value="Add to Your Trails">
+  </form>
 <% }) %>
