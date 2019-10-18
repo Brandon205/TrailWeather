@@ -9,6 +9,7 @@ const helmet = require('helmet');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./models');
 const RateLimit = require('express-rate-limit');
+const methodOverride = require('method-override');
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.use(ejsLayouts);
 app.use(helmet());
+app.use(methodOverride('_method'));
 
 // Rate limiters for login and signup
 const loginLimiter = new RateLimit({
@@ -71,8 +73,8 @@ app.get('/profile', isLoggedIn, function(req, res) {
 
 app.use('/auth', require('./controllers/auth'));
 app.use('/', require('./controllers/api'));
-app.use('/locations', require('./controllers/locations'));
-app.use('/trails', require('./controllers/trails'));
+app.use('/locations', isLoggedIn, require('./controllers/locations'));
+app.use('/trails', isLoggedIn, require('./controllers/trails'));
 
 var server = app.listen(process.env.PORT || 3000);
 

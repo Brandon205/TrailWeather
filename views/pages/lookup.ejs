@@ -1,6 +1,14 @@
 <h1>Weather info</h1>
 <p><%= weatherInfo.currently.summary %></p>
 
+<form action="/locations" method="POST">
+  <input type="hidden" name="city" value="<%= locName %>">
+  <input type="hidden" name="lat" value="<%= weatherInfo.latitude %>">
+  <input type="hidden" name="long" value="<%= weatherInfo.longitude %>">
+
+  <input type="submit" value="Add to Your Locations">
+</form>
+
 <% trails.forEach(function(trail) { %>
   <p><%= trail.name %></p>
 <% }) %>

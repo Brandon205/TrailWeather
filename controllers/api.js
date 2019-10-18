@@ -36,15 +36,29 @@ router.get('/results', function(req, res) {
   });
 });
 
-router.get('/lookup', function(req, res) {
-  axios.get(`${dsUrl}/${process.env.DARK_SKY_KEY}/${req.query.lat},${req.query.long}`)
+// router.get('/lookup', function(req, res) {
+//   let locName = req.body.city;
+//   axios.get(`${dsUrl}/${process.env.DARK_SKY_KEY}/${req.query.lat},${req.query.long}`)
+//   .then(function(weatherInfo) {
+     // eslint-disable-next-line max-len
+//     axios.get(`${hpUrl}/get-trails?lat=${req.query.lat}&lon=${req.query.long}&maxDistance=10&key=${process.env.HIKING_PROJECT_KEY}`)
+//     .then(function(trailInfo) {
+       // eslint-disable-next-line max-len
+//       res.render('pages/lookup', { weatherInfo: weatherInfo.data, trails: trailInfo.data.trails, locName });
+//     });
+//   });
+// });
+
+router.post('/lookup', function(req, res) { // NOT RESTful but needed to keep the url a bit cleaner
+  let locName = req.body.city;
+  axios.get(`${dsUrl}/${process.env.DARK_SKY_KEY}/${req.body.lat},${req.body.long}`)
   .then(function(weatherInfo) {
     // eslint-disable-next-line max-len
-    axios.get(`${hpUrl}/get-trails?lat=${req.query.lat}&lon=${req.query.long}&maxDistance=10&key=${process.env.HIKING_PROJECT_KEY}`)
+    axios.get(`${hpUrl}/get-trails?lat=${req.body.lat}&lon=${req.body.long}&maxDistance=10&key=${process.env.HIKING_PROJECT_KEY}`)
     .then(function(trailInfo) {
-      res.render('pages/lookup', { weatherInfo: weatherInfo.data, trails: trailInfo.data.trails });
+      // eslint-disable-next-line max-len
+      res.render('pages/lookup', { weatherInfo: weatherInfo.data, trails: trailInfo.data.trails, locName });
     });
   });
 });
-
 module.exports = router;
