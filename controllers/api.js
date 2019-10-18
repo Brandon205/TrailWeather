@@ -37,10 +37,13 @@ router.get('/results', function(req, res) {
 });
 
 router.get('/lookup', function(req, res) {
-  // console.log(`${dsUrl}/${process.env.DARK_SKY_KEY}/${req.query.lat},${req.query.long}`);
   axios.get(`${dsUrl}/${process.env.DARK_SKY_KEY}/${req.query.lat},${req.query.long}`)
   .then(function(weatherInfo) {
-    res.render('pages/lookup', { weatherInfo: weatherInfo.data });
+    // eslint-disable-next-line max-len
+    axios.get(`${hpUrl}/get-trails?lat=${req.query.lat}&lon=${req.query.long}&maxDistance=10&key=${process.env.HIKING_PROJECT_KEY}`)
+    .then(function(trailInfo) {
+      res.render('pages/lookup', { weatherInfo: weatherInfo.data, trails: trailInfo.data.trails });
+    });
   });
 });
 

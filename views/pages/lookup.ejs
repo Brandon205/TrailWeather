@@ -1,2 +1,6 @@
 <h1>Weather info</h1>
 <p><%= weatherInfo.currently.summary %></p>
+
+<% trails.forEach(function(trail) { %>
+  <p><%= trail.name %></p>
+<% }) %>
