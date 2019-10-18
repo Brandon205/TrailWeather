@@ -41,6 +41,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   user.associate = function(models) {
     // associations can be defined here
+    models.user.belongsToMany(models.location, { through: 'usersLocations' });
+    models.user.belongsToMany(models.trail, { through: 'usersTrails' });
   };
 
   // Compares entered password to hashed password
