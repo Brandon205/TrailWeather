@@ -1,6 +1,6 @@
-<h1>Weather info</h1>
+<h1><%= locName %>></h1>
 
-<canvas id="icon"></canvas>
+<canvas id="icon" width="100px" height="100px"></canvas>
 
 <p><%= weatherInfo.currently.summary %></p>
 
@@ -21,47 +21,51 @@
   </form>
 <% }) %>
 
+<script src="js/script.js">
+console.log(`😀  whatin the what num 1`);
+</script>
 
-<% var expression = 'clear-day'; %>
-<% var skycons = new Skycons({"color": "pink"}); %>
+<script>
+var expression = 'clear-day';
+var skycons = new Skycons({"color": "pink"});
+skycons.add("icon", Skycons.PARTLY_CLOUDY_DAY);
+console.log(`😀  whatin the what`);
 
-<% skycons.add("icon", Skycons.PARTLY_CLOUDY_DAY); %>
 
-<% switch (expression) { %>
-  <% case 'clear-day': %>
-    <% skycons.set("icon1", Skycons.CLEAR_DAY); %>
-    <% break; %>
-  <% case 'clear-night': %>
-    <% skycons.set("icon1", Skycons.NIGHT); %>
-    <% break; %>
-  <% case 'rain': %>
-    <% skycons.set("icon1", Skycons.RAIN); %>
-    <% break; %>
-  <% case 'snow': %>
-    <% skycons.set("icon1", Skycons.SNOW); %>
-    <% break; %>
-  <% case 'sleet': %>
-    <% skycons.set("icon1", Skycons.SLEET); %>
-    <% break; %>
-  <% case 'wind': %>
-    <% skycons.set("icon1", Skycons.WIND); %>
-    <% break; %>
-  <% case 'fog': %>
-    <% skycons.set("icon1", Skycons.FOG); %>
-    <% break; %>
-  <% case 'cloudy': %>
-    <% skycons.set("icon1", Skycons.CLOUDY); %>
-    <% break; %>
-  <% case 'partly-cloudy-day': %>
-    <% skycons.set("icon1", Skycons.PARTLY_CLOUDY_DAY); %>
-    <% break; %>
-  <% case 'partly-cloudy-night': %>
-    <% skycons.set("icon1", Skycons.PARTLY_CLOUDY_NIGHT); %>
-    <% break; %>
-  <% default: %>
-    <% skycons.set("icon1", Skycons.CLOUDY); %>
-<% } %>
+// switch (expression) {
+// case 'clear-day':
+//   skycons.set("icon", Skycons.CLEAR_DAY);
+//   break;
+// case 'clear-night':
+//   skycons.set("icon", Skycons.NIGHT);
+//   break;
+// case 'rain':
+//   skycons.set("icon", Skycons.RAIN);
+//   break;
+// case 'snow':
+//   skycons.set("icon", Skycons.SNOW);
+//   break;
+// case 'sleet':
+//   skycons.set("icon", Skycons.SLEET);
+//   break;
+// case 'wind':
+//   skycons.set("icon", Skycons.WIND);
+//   break;
+// case 'fog':
+//   skycons.set("icon", Skycons.FOG);
+//   break;
+// case 'cloudy':
+//   skycons.set("icon", Skycons.CLOUDY);
+//   break;
+// case 'partly-cloudy-day':
+//   skycons.set("icon", Skycons.PARTLY_CLOUDY_DAY);
+//   break;
+// case 'partly-cloudy-night':
+//   skycons.set("icon", Skycons.PARTLY_CLOUDY_NIGHT);
+//   break;
+// default:
+//   skycons.set("icon", Skycons.CLOUDY);
+// }
 
-<% skycons.play(); %>
-
-<script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+skycons.play();
+</script>

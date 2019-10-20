@@ -15,11 +15,6 @@ footer {
   float: right;
 }
 
-canvas {
-  width: 100px;
-  height: 100px;
-}
-
 .inline {
   display: inline-block;
 }
