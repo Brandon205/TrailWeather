@@ -14,7 +14,7 @@ router.get('/', function(req, res) { // GET to /trails > show all of the users s
 router.get('/:id', function(req, res) {
   axios.get(`${hpUrl}/get-trails-by-id?ids=${Number(req.params.id)}&key=${process.env.HIKING_PROJECT_KEY}`)
   .then(function(trail) {
-    res.json(trail.data);
+    res.render('pages/showTrail', { trail: trail.data.trails[0] });
   })
   .catch(err => console.log(err));
 });
