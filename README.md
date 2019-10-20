@@ -10,4 +10,10 @@ PICTURE OF FIGMA WIREFRAME HERE
 Other than making that I also wrote down a good 4 to 5 pages of notes on things that I would need to either think about or include in this project. One of the most important pages here is my routes and database plan page, where I made up all of the routes based on the database that I designed to fit the needs of the project. 
 
 ## Day 2 
-Today my main focus for the morning was to make sure that all of my routes hit along with making sure that I got all of the information on the page that I would need to display. Once that was done...
+Today my main focus for the morning was to make sure that all of my routes hit along with making sure that I got all of the information on the page that I would need to display. These weren't too terrible to set up and I had them done with just one or two pieces of information on each page to make sure that the api calls were working. There was one page that was not working though, this was the specific trail page where I was going to show extra details on the trails. I am still not too sure why it wasn't working but after troubleshooting for a few hours I rewrote the call and instead of accessing my database for the trail Id I used the parameter that was in the url, which in hindsight is what I should have done in the first place because it is much cleaner.
+
+## Day 3 
+Because we had just been working for 2 weeks straight I decided to take today to not code as much, but I was still able to do a few things, including starting to add more information to the detail pages I was rendering along with look into using Skycons which I was not able to get working at the time.
+
+## Day 4 
+Today I got back to work on adding extra information to the details pages, and making things look a little better, like making the nav bar an actual nav bar that wasn't broken up line by line. Because I was starting to look into designing I had to backtrack a little bit and start to think mobile first. When seeing how to page as is loaded in the browser I found that I would have to have a hamburger menu of some sort, so I had to start desinging and making that so that the nav bar wasn't ruined by the smaller width.

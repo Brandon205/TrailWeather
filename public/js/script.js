@@ -724,3 +724,52 @@
 
   global.Skycons = Skycons;
 }(this));
+
+<script src="js/script.js">
+console.log(`😀  whatin the what num 1`);
+</script>
+
+<script>
+var expression = 'clear-day';
+var skycons = new Skycons({"color": "pink"});
+skycons.add("icon", Skycons.PARTLY_CLOUDY_DAY);
+console.log(`😀  whatin the what`);
+
+
+// switch (expression) {
+// case 'clear-day':
+//   skycons.set("icon", Skycons.CLEAR_DAY);
+//   break;
+// case 'clear-night':
+//   skycons.set("icon", Skycons.NIGHT);
+//   break;
+// case 'rain':
+//   skycons.set("icon", Skycons.RAIN);
+//   break;
+// case 'snow':
+//   skycons.set("icon", Skycons.SNOW);
+//   break;
+// case 'sleet':
+//   skycons.set("icon", Skycons.SLEET);
+//   break;
+// case 'wind':
+//   skycons.set("icon", Skycons.WIND);
+//   break;
+// case 'fog':
+//   skycons.set("icon", Skycons.FOG);
+//   break;
+// case 'cloudy':
+//   skycons.set("icon", Skycons.CLOUDY);
+//   break;
+// case 'partly-cloudy-day':
+//   skycons.set("icon", Skycons.PARTLY_CLOUDY_DAY);
+//   break;
+// case 'partly-cloudy-night':
+//   skycons.set("icon", Skycons.PARTLY_CLOUDY_NIGHT);
+//   break;
+// default:
+//   skycons.set("icon", Skycons.CLOUDY);
+// }
+
+skycons.play();
+</script>

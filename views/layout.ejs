@@ -9,17 +9,23 @@
   <body>
 
     <nav>
-      <a href="/">Home</a> | 
-      <a href="/locations">Your Locations</a> |
-      <a href="/trails">Your Trails</a> 
-      <h3 id="middle">TrailWeather</h3>
-      <a href="/search">Search Locations</a>
-      <% if (currentUser) { %>
-        <p class="login">Logged in as <a href="/profile"><%= currentUser.name %> | </a></p>
-      <% } else { %>
-        <a href="/auth/login">Login |</a>
-      <% } %>  
-      <a href="/auth/signup">Sign Up</a>
+      <div class="left-nav">
+        <a href="/">Home &nbsp</a> | &nbsp
+        <a href="/locations">Your Locations &nbsp</a> | &nbsp
+        <a href="/trails"> Your Trails </a> 
+      </div>
+      <div class="middle-nav">
+        <h2 id="middle">TrailWeather</h2>
+      </div>
+      <div class="right-nav">
+        <a href="/search">Search Locations &nbsp</a> | &nbsp
+        <% if (currentUser) { %>
+          <p class="login">Logged in as <a href="/profile"><%= currentUser.name %> | &nbsp</a></p>
+        <% } else { %>
+          <a href="/auth/login"> Login | &nbsp</a>
+        <% } %>  
+        <a href="/auth/signup"> Sign Up</a>
+      </div>
     </nav>
 
     <main class="container">

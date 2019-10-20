@@ -1,9 +1,5 @@
-<h1><%= locName %>></h1>
-
-<canvas id="icon" width="100px" height="100px"></canvas>
-
-<p><%= weatherInfo.currently.summary %></p>
-
+<h1><%= locName %></h1>
+<h4><%= new Date( weatherInfo.currently.time ) %></h4>
 <form action="/locations" method="POST">
   <input type="hidden" name="city" value="<%= locName %>">
   <input type="hidden" name="lat" value="<%= weatherInfo.latitude %>">
@@ -12,60 +8,39 @@
   <input type="submit" value="Add to Your Locations">
 </form>
 
-<% trails.forEach(function(trail) { %>
-  <p class="inline"><%= trail.name %></p>
-  <form action="/trails" method="POST">
-    <input type="hidden" name="name" value="<%= trail.name %>">
-    <input type="hidden" name="idnum" value="<%= trail.id %>">
-    <input type="submit" value="Add to Your Trails">
-  </form>
-<% }) %>
+<canvas id="icon" width="64px" height="64px"></canvas>
 
-<script src="js/script.js">
-console.log(`😀  whatin the what num 1`);
-</script>
+<p><%= weatherInfo.currently.summary %></p>
 
-<script>
-var expression = 'clear-day';
-var skycons = new Skycons({"color": "pink"});
-skycons.add("icon", Skycons.PARTLY_CLOUDY_DAY);
-console.log(`😀  whatin the what`);
+<div class="info-container">
+  <div class="left">
+    <h1><%= weatherInfo.currently.temperature %>°F</h1>
+    <h3><%= weatherInfo.currently.summary %></h3>
 
+  </div>
 
-// switch (expression) {
-// case 'clear-day':
-//   skycons.set("icon", Skycons.CLEAR_DAY);
-//   break;
-// case 'clear-night':
-//   skycons.set("icon", Skycons.NIGHT);
-//   break;
-// case 'rain':
-//   skycons.set("icon", Skycons.RAIN);
-//   break;
-// case 'snow':
-//   skycons.set("icon", Skycons.SNOW);
-//   break;
-// case 'sleet':
-//   skycons.set("icon", Skycons.SLEET);
-//   break;
-// case 'wind':
-//   skycons.set("icon", Skycons.WIND);
-//   break;
-// case 'fog':
-//   skycons.set("icon", Skycons.FOG);
-//   break;
-// case 'cloudy':
-//   skycons.set("icon", Skycons.CLOUDY);
-//   break;
-// case 'partly-cloudy-day':
-//   skycons.set("icon", Skycons.PARTLY_CLOUDY_DAY);
-//   break;
-// case 'partly-cloudy-night':
-//   skycons.set("icon", Skycons.PARTLY_CLOUDY_NIGHT);
-//   break;
-// default:
-//   skycons.set("icon", Skycons.CLOUDY);
-// }
+  <div class="right">
+    <h6>Wind: <%= weatherInfo.currently.windSpeed %>mph</h6>
+    <h6>Precipitation: <%= weatherInfo.currently.precipProbability * 100 %>%</h6>
+    <h6>Humidity: <%= weatherInfo.currently.humidity * 100 %>%</h6>
+  </div>
+</div>
+<div class="daily-info">
 
-skycons.play();
-</script>
+</div>
+
+<div class="trail-container">
+  <div class="trail">
+  <% trails.forEach(function(trail) { %>
+    <h4 class="inline"><%= trail.name %></h4>
+    <form action="/trails/<%= trail.id %>">
+      <input type="submit" value="View Details">
+    </form>
+    <form action="/trails" method="POST">
+      <input type="hidden" name="name" value="<%= trail.name %>">
+      <input type="hidden" name="idnum" value="<%= trail.id %>">
+      <input type="submit" value="Add to Your Trails">
+    </form>
+  </div>
+  <% }); %>
+</div>

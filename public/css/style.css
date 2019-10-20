@@ -1,3 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #FFFFFF 1.00%, #6DD5FA 50.00%, #2980B9 85.00%);
+  height: 100vh;
+}
+
+nav {
+  display: none;
+}
+
+nav div h2 {
+  display: inline-block;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -5,16 +20,47 @@ main {
   justify-content: flex-start;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
-
 footer {
   float: right;
+  margin-right: 10px;
 }
 
 .inline {
   display: inline-block;
+}
+
+.info-container {
+  width: 95%;
+  padding: 10px auto;
+  background: rgba(115, 115, 115, 0.63);
+}
+
+@media screen and (min-width: 870px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ccc;
+  }
+  
+  nav div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin: 0 10px;
+  }
+  
+  nav div a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+  }
+  
+  nav div h2, nav div p {
+    margin: 15px;
+  }
+  
+  nav div a:hover {
+    color: rgb(26, 26, 26);
+  }
 }
