@@ -1,4 +1,7 @@
 <h1>Weather info</h1>
+
+<canvas id="icon"></canvas>
+
 <p><%= weatherInfo.currently.summary %></p>
 
 <form action="/locations" method="POST">
@@ -17,3 +20,48 @@
     <input type="submit" value="Add to Your Trails">
   </form>
 <% }) %>
+
+
+<% var expression = 'clear-day'; %>
+<% var skycons = new Skycons({"color": "pink"}); %>
+
+<% skycons.add("icon", Skycons.PARTLY_CLOUDY_DAY); %>
+
+<% switch (expression) { %>
+  <% case 'clear-day': %>
+    <% skycons.set("icon1", Skycons.CLEAR_DAY); %>
+    <% break; %>
+  <% case 'clear-night': %>
+    <% skycons.set("icon1", Skycons.NIGHT); %>
+    <% break; %>
+  <% case 'rain': %>
+    <% skycons.set("icon1", Skycons.RAIN); %>
+    <% break; %>
+  <% case 'snow': %>
+    <% skycons.set("icon1", Skycons.SNOW); %>
+    <% break; %>
+  <% case 'sleet': %>
+    <% skycons.set("icon1", Skycons.SLEET); %>
+    <% break; %>
+  <% case 'wind': %>
+    <% skycons.set("icon1", Skycons.WIND); %>
+    <% break; %>
+  <% case 'fog': %>
+    <% skycons.set("icon1", Skycons.FOG); %>
+    <% break; %>
+  <% case 'cloudy': %>
+    <% skycons.set("icon1", Skycons.CLOUDY); %>
+    <% break; %>
+  <% case 'partly-cloudy-day': %>
+    <% skycons.set("icon1", Skycons.PARTLY_CLOUDY_DAY); %>
+    <% break; %>
+  <% case 'partly-cloudy-night': %>
+    <% skycons.set("icon1", Skycons.PARTLY_CLOUDY_NIGHT); %>
+    <% break; %>
+  <% default: %>
+    <% skycons.set("icon1", Skycons.CLOUDY); %>
+<% } %>
+
+<% skycons.play(); %>
+
+<script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
