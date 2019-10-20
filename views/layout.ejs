@@ -5,10 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TrailWeather</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
 
-    <nav>
+    <nav class="mobile">
+      <a class="active" href="/">TrailWeather</a>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/locations">Your Locations</a>
+        <a href="/trails">Your Trails</a>
+        <a href="/search">Search Locations</a>
+        <% if (!currentUser) { %>
+          <a href="/auth/login">Login</a>
+          <a href="/auth/signup">Signup</a>
+          <% } else { %>
+            <a href="/profile">Profile</a>
+          <% } %>
+      </div>
+      <a href="javascript:void(0);" class="hamburger" onclick="showMenu()"><i class="fa fa-bars"></i></a>
+      <h3>TrailWeather</h3>
+    </nav>
+
+    <script>
+      function showMenu() {
+        let links = document.getElementById('links');
+        console.log(links);
+        if (links.style.display === 'block') {
+          links.style.display = 'none';
+        } else {
+          links.style.display = 'block';
+        }
+      }
+      </script>
+
+    <nav id="desktop">
       <div class="left-nav">
         <a href="/">Home &nbsp</a> | &nbsp
         <a href="/locations">Your Locations &nbsp</a> | &nbsp

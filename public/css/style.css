@@ -5,10 +5,6 @@ body {
   height: 100vh;
 }
 
-nav {
-  display: none;
-}
-
 nav div h2 {
   display: inline-block;
 }
@@ -25,6 +21,37 @@ footer {
   margin-right: 10px;
 }
 
+.mobile {
+  background-color: #ccc;
+  overflow: hidden;
+  position: relative;
+}
+
+.mobile .links {
+  display: none;
+}
+
+.mobile a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.mobile a.hamburger {
+  display: block;
+  background: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mobile a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
 .inline {
   display: inline-block;
 }
@@ -35,14 +62,11 @@ footer {
   background: rgba(115, 115, 115, 0.63);
 }
 
+#desktop {
+  display: none;
+}
+
 @media screen and (min-width: 870px) {
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ccc;
-  }
-  
   nav div {
     display: flex;
     justify-content: space-between;
@@ -62,5 +86,16 @@ footer {
   
   nav div a:hover {
     color: rgb(26, 26, 26);
+  }
+
+  #desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ccc;
+  }
+
+  #mobile {
+    display: none;
   }
 }
