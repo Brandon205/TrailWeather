@@ -5,6 +5,7 @@
     <h3><%= location.city %></h3>
     <h4><%= location.lat %>, <%= location.long %></h4>
     <form action="/locations/<%= location.lat %>/?_method=DELETE" method="POST">
+      <input type="hidden" name="id" value="currentUser.id">
       <input type="submit" value="Delete">
     </form>
     <form action="/lookup" method="POST">

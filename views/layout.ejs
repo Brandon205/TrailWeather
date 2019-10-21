@@ -42,8 +42,12 @@
     <nav id="desktop">
       <div class="left-nav">
         <a href="/">Home &nbsp</a> | &nbsp
-        <a href="/locations/<%= currentUser.name %>">Your Locations &nbsp</a> | &nbsp
-        <a href="/trails/<%= currentUser.id %>"> Your Trails </a> 
+        <% var input; %>
+        <% if (currentUser) { %>
+          <% input = currentUser.id; %>
+        <% } %>
+        <a href="/locations/<%= input %>"> Your Locations &nbsp</a> | &nbsp
+        <a href="/trails/<%= input %>"> Your Trails </a> 
       </div>
       <div class="middle-nav">
         <h2 id="middle">TrailWeather</h2>

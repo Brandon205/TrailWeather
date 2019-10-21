@@ -8,10 +8,6 @@ router.get('/:id', function(req, res) {
   .then(function(user) {
     res.render('pages/locations', { user });
   });
-
-  // db.location.findAll().then(function(locations) {
-  //   res.render('pages/locations', { locations });
-  // });
 });
 
 // POST to /locations > add new locations to user locations list
@@ -32,18 +28,6 @@ router.post('/', function(req, res) {
       });
     });
   });
-
-  // db.location.findOrCreate({
-  //   where: {
-  //   city: req.body.city
-  //   },
-  //   defaults: {
-  //   lat: req.body.lat,
-  //   long: req.body.long
-  //   }
-  // }).then(function([location, created]) {
-  //   res.redirect('/locations');
-  // });
 });
 
 // DELETE to /locations > remove the correct location from the users location list
@@ -54,7 +38,7 @@ router.delete('/:id', function(req, res) {
       lat: num
     }
   }).then(function(delLocation) {
-    res.redirect('/locations');
+    res.redirect(`/locations/${Number(req.body.id)}`);
   });
 });
 

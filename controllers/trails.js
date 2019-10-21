@@ -24,11 +24,7 @@ router.get('/show/:id', function(req, res) {
 });
 
 router.post('/', function(req, res) { // POST to /trails > add a new trail to the users saved list (Form on trails.ejs)
-  db.user.findOne({
-    where: {
-      name: req.body.username
-    }
-  }).then(function(user) {
+  db.user.findByPk(Number(req.body.id)).then(function(user) {
     db.trail.findOrCreate({
       where: {
         idnum: req.body.idnum
