@@ -1,8 +1,11 @@
-<% trails.forEach(function(trail) { %>
+<% console.log(user.trail) %>
+
+<% user.trails.forEach(function(trail) { %>
   <div>
-  <h3><a href="trails/<%= trail.idnum %>"><%= trail.name %></a></h3>
+  <h3><a href="trails/show/<%= trail.idnum %>"><%= trail.name %></a></h3>
 
   <form action="/trails/<%= trail.idnum %>/?_method=DELETE" method="POST">
+    <input type="hidden" name="id" value="<%= currentUser.id %>">
     <input type="submit" value="Remove from List">
   </form>
 </div>

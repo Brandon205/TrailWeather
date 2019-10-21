@@ -5,40 +5,52 @@ const axios = require('axios');
 
 let hpUrl = 'https://www.hikingproject.com/data';
 
-router.get('/', function(req, res) { // GET to /trails > show all of the users saved trails
-  db.user.findOne({
-    where: {
-      name: currentUser.name
-    }
-  }).then(function(user) {
-    user.getTrails().then(function(trails) {
-      res.render('pages/trails', { trails });
-    });
-  });
+router.get('/:id', function(req, res) { // GET to /trails > show all of the users saved trails
+  db.user.findByPk(Number(req.params.id), { include: [db.trail] }).then(function(user) {
+    res.render('pages/trails', { user });
+  })
+
   // db.trail.findAll().then(function(trails) {
   //   res.render('pages/trails', { trails });
   // });
 });
 
-router.get('/:id', function(req, res) {
+router.get('/show/:id', function(req, res) {
   axios.get(`${hpUrl}/get-trails-by-id?ids=${Number(req.params.id)}&key=${process.env.HIKING_PROJECT_KEY}`)
   .then(function(trail) {
     res.render('pages/showTrail', { trail: trail.data.trails[0] });
-  })
-  .catch(err => console.log(err));
+  });
 });
 
 router.post('/', function(req, res) { // POST to /trails > add a new trail to the users saved list (Form on trails.ejs)
-  db.trail.findOrCreate({
+  db.user.findOne({
     where: {
-      idnum: req.body.idnum
-    },
-    defaults: {
-      name: req.body.name
+      name: req.body.username
     }
-  }).then(function(newTrail) {
-    res.redirect('/trails');
+  }).then(function(user) {
+    db.trail.findOrCreate({
+      where: {
+        idnum: req.body.idnum
+      },
+      defaults: {
+        name: req.body.name
+      }
+    }).then(function([newTrail, created]) {
+      user.addTrail(newTrail);
+    }).then(function(data) {
+      res.redirect(`/trails/${user.id}`);
+    });
   });
+  // db.trail.findOrCreate({
+  //   where: {
+  //     idnum: req.body.idnum
+  //   },
+  //   defaults: {
+  //     name: req.body.name
+  //   }
+  // }).then(function(newTrail) {
+  //   res.redirect('/trails');
+  // });
 });
 
 router.delete('/:id', function(req, res) { // Delete one trail from the list (Form is on trails.ejs)
@@ -47,7 +59,7 @@ router.delete('/:id', function(req, res) { // Delete one trail from the list (Fo
       idnum: req.params.id
     }
   }).then(function(deletedTrail) {
-    res.redirect('/trails');
+    res.redirect(`/trails/${req.body.id}`);
   });
 });
 

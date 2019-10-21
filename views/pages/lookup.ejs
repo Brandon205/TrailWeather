@@ -70,10 +70,11 @@
   <% trails.forEach(function(trail) { %>
     <div class="trail">
     <h4 class="inline"><%= trail.name %></h4>
-    <form action="/trails/<%= trail.id %>">
+    <form action="/trails/show/<%= trail.id %>">
       <input type="submit" value="View Trail Details">
     </form>
     <form action="/trails" method="POST">
+      <input type="hidden" name="username" value="<%= currentUser.name %>">
       <input type="hidden" name="name" value="<%= trail.name %>">
       <input type="hidden" name="idnum" value="<%= trail.id %>">
       <input type="submit" value="Add to Your Trails">

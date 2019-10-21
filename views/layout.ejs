@@ -42,8 +42,8 @@
     <nav id="desktop">
       <div class="left-nav">
         <a href="/">Home &nbsp</a> | &nbsp
-        <a href="/locations">Your Locations &nbsp</a> | &nbsp
-        <a href="/trails"> Your Trails </a> 
+        <a href="/locations/<%= currentUser.name %>">Your Locations &nbsp</a> | &nbsp
+        <a href="/trails/<%= currentUser.id %>"> Your Trails </a> 
       </div>
       <div class="middle-nav">
         <h2 id="middle">TrailWeather</h2>
@@ -63,6 +63,7 @@
     <main class="container">
       <% include partials/alerts %>
       <%- body %>
+      <% console.log(currentUser) %>
     </main>
 
     <footer>
