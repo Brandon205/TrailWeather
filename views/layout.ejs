@@ -10,12 +10,17 @@
   </head>
   <body>
 
+      <% var input; %>
+      <% if (currentUser) { %>
+        <% input = currentUser.id; %>
+      <% } %>
+
     <nav class="mobile">
       <a class="active" href="/">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TrailWeather</a>
       <div class="links">
         <a href="/">Home</a>
-        <a href="/locations">Your Locations</a>
-        <a href="/trails">Your Trails</a>
+        <a href="/locations/<%= input %>">Your Locations</a>
+        <a href="/trails/<%= input %>">Your Trails</a>
         <a href="/search">Search Locations</a>
         <% if (!currentUser) { %>
           <a href="/auth/login">Login</a>
@@ -42,15 +47,11 @@
     <nav id="desktop">
       <div class="left-nav">
         <a href="/">Home &nbsp</a> | &nbsp
-        <% var input; %>
-        <% if (currentUser) { %>
-          <% input = currentUser.id; %>
-        <% } %>
         <a href="/locations/<%= input %>"> Your Locations &nbsp</a> | &nbsp
         <a href="/trails/<%= input %>"> Your Trails </a> 
       </div>
       <div class="middle-nav">
-        <h2 id="middle">TrailWeather</h2>
+        <h2><a id="title" href="/">TrailWeather</a></h2>
       </div>
       <div class="right-nav">
         <a href="/search">Search Locations &nbsp</a> | &nbsp
@@ -67,11 +68,12 @@
     <main class="container">
       <% include partials/alerts %>
       <%- body %>
-      <% console.log(currentUser) %>
     </main>
 
     <footer>
     <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+    <a class="right-atag" href="https://github.com/Brandon205/WeatherApp">Github</a>
+    <a class="right-atag" href="https://www.linkedin.com/in/brandonblack02/">LinkedIn</a>
     </footer>
 
   </body>

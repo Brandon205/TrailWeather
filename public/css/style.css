@@ -3,7 +3,8 @@ body {
   flex-direction: column;
   margin: 0;
   padding: 0;
-  background: linear-gradient(180deg, #FFFFFF 1.00%, #6DD5FA 50.00%, #2980B9 85.00%);
+  /* background: linear-gradient(180deg, #FFFFFF 1.00%, #6DD5FA 50.00%, #2980B9 85.00%); */
+  background-image: url('../img/adventure-calm-waters-canada-910307.jpg');
   min-height: 100vh;
   font-size: .93em;
 }
@@ -18,12 +19,29 @@ main {
   align-items: center;
   justify-content: flex-start;
   flex: 1 0 auto;
+  background-color: rgba(115, 115, 115, 0.63);
+  margin: 10px auto;
+  padding: 0 15px;
+  border-radius: 10%;
+  min-width: 300px;
 }
 
 footer {
-  float: right;
-  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   flex-shrink: 0;
+}
+
+.right-atag {
+  float: right;
+  text-decoration: none;
+  font-size: 1.1em;
+  color: black;
+}
+
+.trail-img {
+  max-width: 800px;
+  max-height: 600px;
 }
 
 .mobile {
@@ -120,7 +138,7 @@ footer {
   }
   
   nav div a:hover {
-    color: rgb(26, 26, 26);
+    color: tomato;
   }
 
   a.active {
@@ -131,10 +149,14 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ccc;
+    background-color: rgba(204, 204, 204, 0.507);
   }
 
   #mobile {
     display: none;
+  }
+
+  #title {
+    font-size: 1.2em;
   }
 }

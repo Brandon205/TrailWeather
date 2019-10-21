@@ -1,4 +1,20 @@
-<h1>Trail stats here</h1>
+<h1><%= trail.name %></h1>
 
-<h2><%= trail.name %></h2>
-<h2><%= trail.id %></h2>
+<img class="trail-img" src="<%= trail.imgMedium %>" alt="Image of hike">
+<h4><%= trail.summary %></h3>
+<form action="/trails" method="POST">
+  <input type="hidden" name="id" value="<%= currentUser.id %>">
+  <input type="hidden" name="name" value="<%= trail.name %>">
+  <input type="hidden" name="idnum" value="<%= trail.id %>">
+  <input type="submit" value="Add to Your Trails">
+</form>
+
+
+<h3>Elevation</h3>
+<h4><%= trail.ascent %>ft</h4>
+<h4><%= trail.descent %>ft</h4>
+<h4><%= trail.high %>ft</h4>
+<h4><%= trail.low %>ft</h4>
+
+<h3>Trail</h3>
+<h4><%= trail.length %>mi</h4>
