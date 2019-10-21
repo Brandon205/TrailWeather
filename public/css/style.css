@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   background: linear-gradient(180deg, #FFFFFF 1.00%, #6DD5FA 50.00%, #2980B9 85.00%);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 nav div h2 {

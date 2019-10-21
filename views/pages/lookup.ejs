@@ -1,5 +1,5 @@
 <h1><%= locName %></h1>
-<h4><%= new Date( weatherInfo.currently.time ) %></h4>
+<h4><%= new Date(weatherInfo.currently.time) %></h4>
 <form action="/locations" method="POST">
   <input type="hidden" name="city" value="<%= locName %>">
   <input type="hidden" name="lat" value="<%= weatherInfo.latitude %>">
@@ -9,7 +9,12 @@
 </form>
 
 <canvas id="icon" width="64px" height="64px"></canvas>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
+<script>
+  switch (exp) {
+    
+  }
+</script>
 <p><%= weatherInfo.currently.summary %></p>
 
 <div class="info-container">
