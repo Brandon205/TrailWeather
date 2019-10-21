@@ -1,6 +1,7 @@
 <h1><%= locName %></h1>
 <h4><%= new Date(weatherInfo.currently.time * 1000) %></h4>
 <form action="/locations" method="POST">
+  <input type="hidden" name="id" value="<%= currentUser.id %>">
   <input type="hidden" name="city" value="<%= locName %>">
   <input type="hidden" name="lat" value="<%= weatherInfo.latitude %>">
   <input type="hidden" name="long" value="<%= weatherInfo.longitude %>">

@@ -3,25 +3,47 @@ const router = express.Router();
 const db = require('../models');
 
 // GET to /locations > show all of the users saved locations
-router.get('/', function(req, res) {
-  db.location.findAll().then(function(locations) {
-    res.render('pages/locations', { locations });
+router.get('/:id', function(req, res) {
+  db.user.findByPk(Number(req.params.id), { include: [db.location] })
+  .then(function(user) {
+    res.render('pages/locations', { user });
   });
+
+  // db.location.findAll().then(function(locations) {
+  //   res.render('pages/locations', { locations });
+  // });
 });
 
 // POST to /locations > add new locations to user locations list
 router.post('/', function(req, res) {
-  db.location.findOrCreate({
-    where: {
-    city: req.body.city
-    },
-    defaults: {
-    lat: req.body.lat,
-    long: req.body.long
-    }
-  }).then(function([location, created]) {
-    res.redirect('/locations');
+  db.user.findByPk(Number(req.body.id))
+  .then(function(user) {
+    db.location.findOrCreate({
+      where: {
+        city: req.body.city
+      },
+      defaults: {
+        lat: req.body.lat,
+        long: req.body.long
+      }
+    }).then(function([location, created]) {
+      user.addLocation(location).then(function(data) {
+        res.redirect(`/locations/${user.id}`);
+      });
+    });
   });
+
+  // db.location.findOrCreate({
+  //   where: {
+  //   city: req.body.city
+  //   },
+  //   defaults: {
+  //   lat: req.body.lat,
+  //   long: req.body.long
+  //   }
+  // }).then(function([location, created]) {
+  //   res.redirect('/locations');
+  // });
 });
 
 // DELETE to /locations > remove the correct location from the users location list

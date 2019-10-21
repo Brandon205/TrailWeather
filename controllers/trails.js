@@ -6,9 +6,10 @@ const axios = require('axios');
 let hpUrl = 'https://www.hikingproject.com/data';
 
 router.get('/:id', function(req, res) { // GET to /trails > show all of the users saved trails
-  db.user.findByPk(Number(req.params.id), { include: [db.trail] }).then(function(user) {
+  db.user.findByPk(Number(req.params.id), { include: [db.trail] })
+  .then(function(user) {
     res.render('pages/trails', { user });
-  })
+  });
 
   // db.trail.findAll().then(function(trails) {
   //   res.render('pages/trails', { trails });
