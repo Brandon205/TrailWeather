@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TrailWeather</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
 
     <nav class="mobile">
-      <a class="active" href="/">TrailWeather</a>
+      <a class="active" href="/">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TrailWeather</a>
       <div class="links">
         <a href="/">Home</a>
         <a href="/locations">Your Locations</a>
@@ -21,16 +22,15 @@
           <a href="/auth/signup">Signup</a>
           <% } else { %>
             <a href="/profile">Profile</a>
+            <a href="/auth/logout">Logout</a>
           <% } %>
       </div>
       <a href="javascript:void(0);" class="hamburger" onclick="showMenu()"><i class="fa fa-bars"></i></a>
-      <h3>TrailWeather</h3>
     </nav>
 
     <script>
       function showMenu() {
-        let links = document.getElementById('links');
-        console.log(links);
+        let links = document.querySelector('.links');
         if (links.style.display === 'block') {
           links.style.display = 'none';
         } else {
@@ -51,11 +51,12 @@
       <div class="right-nav">
         <a href="/search">Search Locations &nbsp</a> | &nbsp
         <% if (currentUser) { %>
-          <p class="login">Logged in as <a href="/profile"><%= currentUser.name %> | &nbsp</a></p>
+          <a href="/profile"><%= currentUser.name %> | &nbsp</a>
+          <a href="/auth/logout"> Logout </a>
         <% } else { %>
           <a href="/auth/login"> Login | &nbsp</a>
+          <a href="/auth/signup"> Signup </a>
         <% } %>  
-        <a href="/auth/signup"> Sign Up</a>
       </div>
     </nav>
 
@@ -65,7 +66,7 @@
     </main>
 
     <footer>
-      <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+    <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
     </footer>
 
   </body>
