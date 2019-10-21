@@ -15,7 +15,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('./public'));
 app.use(ejsLayouts);
 app.use(helmet());
 app.use(methodOverride('_method'));

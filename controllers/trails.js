@@ -6,9 +6,18 @@ const axios = require('axios');
 let hpUrl = 'https://www.hikingproject.com/data';
 
 router.get('/', function(req, res) { // GET to /trails > show all of the users saved trails
-  db.trail.findAll().then(function(trails) {
-    res.render('pages/trails', { trails });
+  db.user.findOne({
+    where: {
+      name: currentUser.name
+    }
+  }).then(function(user) {
+    user.getTrails().then(function(trails) {
+      res.render('pages/trails', { trails });
+    });
   });
+  // db.trail.findAll().then(function(trails) {
+  //   res.render('pages/trails', { trails });
+  // });
 });
 
 router.get('/:id', function(req, res) {

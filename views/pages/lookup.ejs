@@ -1,33 +1,65 @@
 <h1><%= locName %></h1>
-<h4><%= new Date(weatherInfo.currently.time) %></h4>
+<h4><%= new Date(weatherInfo.currently.time * 1000) %></h4>
 <form action="/locations" method="POST">
   <input type="hidden" name="city" value="<%= locName %>">
   <input type="hidden" name="lat" value="<%= weatherInfo.latitude %>">
   <input type="hidden" name="long" value="<%= weatherInfo.longitude %>">
-
   <input type="submit" value="Add to Your Locations">
 </form>
 
-<canvas id="icon" width="64px" height="64px"></canvas>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
-<script>
-  switch (exp) {
-    
+<canvas id="icon" width="100" height="100"></canvas>
+<script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+<script defer>
+  var expression = 'weatherInfo.currently.icon';
+  var skycons = new Skycons({"color": "gray"});
+  
+  switch (expression) {
+  case 'clear-day':
+    skycons.set("icon", Skycons.CLEAR_DAY);
+    break;
+  case 'clear-night':
+    skycons.set("icon", Skycons.NIGHT);
+    break;
+  case 'rain':
+    skycons.set("icon", Skycons.RAIN);
+    break;
+  case 'snow':
+    skycons.set("icon", Skycons.SNOW);
+    break;
+  case 'sleet':
+    skycons.set("icon", Skycons.SLEET);
+    break;
+  case 'wind':
+    skycons.set("icon", Skycons.WIND);
+    break;
+  case 'fog':
+    skycons.set("icon", Skycons.FOG);
+    break;
+  case 'cloudy':
+    skycons.set("icon", Skycons.CLOUDY);
+    break;
+  case 'partly-cloudy-day':
+    skycons.set("icon", Skycons.PARTLY_CLOUDY_DAY);
+    break;
+  case 'partly-cloudy-night':
+    skycons.set("icon", Skycons.PARTLY_CLOUDY_NIGHT);
+    break;
+  default:
+    skycons.set("icon", Skycons.CLOUDY);
   }
+  skycons.play();
 </script>
-<p><%= weatherInfo.currently.summary %></p>
 
 <div class="info-container">
   <div class="left">
-    <h1><%= weatherInfo.currently.temperature %>°F</h1>
+    <h1><%= Math.round(weatherInfo.currently.temperature) %>°F</h1>
     <h3><%= weatherInfo.currently.summary %></h3>
-
   </div>
 
   <div class="right">
-    <h6>Wind: <%= weatherInfo.currently.windSpeed %>mph</h6>
-    <h6>Precipitation: <%= weatherInfo.currently.precipProbability * 100 %>%</h6>
-    <h6>Humidity: <%= weatherInfo.currently.humidity * 100 %>%</h6>
+    <h5>Wind: <%= weatherInfo.currently.windSpeed %>mph</h5>
+    <h5>Precipitation: <%= weatherInfo.currently.precipProbability * 100 %>%</h5>
+    <h5>Humidity: <%= weatherInfo.currently.humidity * 100 %>%</h5>
   </div>
 </div>
 <div class="daily-info">
@@ -35,11 +67,11 @@
 </div>
 
 <div class="trail-container">
-  <div class="trail">
   <% trails.forEach(function(trail) { %>
+    <div class="trail">
     <h4 class="inline"><%= trail.name %></h4>
     <form action="/trails/<%= trail.id %>">
-      <input type="submit" value="View Details">
+      <input type="submit" value="View Trail Details">
     </form>
     <form action="/trails" method="POST">
       <input type="hidden" name="name" value="<%= trail.name %>">
