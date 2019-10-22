@@ -59,6 +59,11 @@ footer {
   max-height: 300px;
 }
 
+.trail-detail {
+  display: flex;
+  justify-content: space-around;
+}
+
 .mobile {
   background-color: #ccc;
   overflow: hidden;

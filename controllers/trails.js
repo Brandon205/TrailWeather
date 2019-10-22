@@ -16,7 +16,21 @@ router.get('/:id', function(req, res) { // GET to /trails > show all of the user
 router.get('/show/:id', function(req, res) {
   axios.get(`${hpUrl}/get-trails-by-id?ids=${Number(req.params.id)}&key=${process.env.HIKING_PROJECT_KEY}`)
   .then(function(trail) {
-    res.render('pages/showTrail', { trail: trail.data.trails[0] });
+    let marker = function() {
+      let markerObj = {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [trail.long, trail.lat]
+        },
+        "properties": {
+          "title": trail.name,
+          "icons": "airport"
+        }
+      }
+      return JSON.stringify(markerObj);
+    };
+    res.render('pages/showTrail', { trail: trail.data.trails[0], mapkey: process.env.MAPBOX_KEY, marker });
   })
   .catch(err => console.log(err));
 });
@@ -28,7 +42,9 @@ router.post('/', function(req, res) { // POST to /trails > add a new trail to th
         idnum: req.body.idnum
       },
       defaults: {
-        name: req.body.name
+        name: req.body.name,
+        lat: req.body.lat,
+        long: req.body.long
       }
     }).then(function([newTrail, created]) {
       user.addTrail(newTrail);

@@ -9,12 +9,46 @@
   <input type="submit" value="Add to Your Trails">
 </form>
 
-
-<h3>Elevation</h3>
+<div class="trail-detail">
+<h3><strong>Elevation</strong></h3>
 <h4><%= trail.ascent %>ft</h4>
 <h4><%= trail.descent %>ft</h4>
 <h4><%= trail.high %>ft</h4>
 <h4><%= trail.low %>ft</h4>
 
-<h3>Trail</h3>
+<h3><strong>Trail</strong></h3>
 <h4><%= trail.length %>mi</h4>
+</div>
+<% console.log(marker); %>
+
+<div id="map" style="width: 60em; height: 35em;"></div>
+
+<script>
+    mapboxgl.accessToken = '<%= mapkey %>'
+    let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v10',
+    center: [-96, 40.8],
+    zoom: 3
+    })
+    map.on('load', function(){
+    map.addLayer({
+        "id": "points",
+        "type": "symbol",
+        "source": {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": [<%- marker %>]
+        }
+        },
+        "layout": {
+        "icon-image": "{icon}-15",
+        "text-field": "{title}",
+        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+        "text-offset": [0, 0.6],
+        "text-anchor": "top"
+        }
+    })
+    })
+</script>
