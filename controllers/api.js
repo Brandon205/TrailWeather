@@ -15,6 +15,10 @@ router.get('/home', function(req, res) { // Shows the main home page
   res.render('/pages/index');
 });
 
+router.get('/edit', function(req, res) {
+  
+});
+
 router.get('/search', function(req, res) { // Shows a from for searching locations
   res.render('pages/search');
 });
