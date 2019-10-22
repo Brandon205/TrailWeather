@@ -55,6 +55,15 @@
     <h5>Humidity: <%= weatherInfo.currently.humidity * 100 %>%</h5>
   </div>
 </div>
-<div class="daily-info">
-
+<div class="info-container">
+  <% let regex = /^(\w{3})/g %>
+  <% for (let i = 1; i < 6; i++) { %>
+    <% let date = weatherInfo.daily.data[i].time; %>
+    <% let matches = date.match(regex) %>
+    <div>
+      <h4><%= matches %></h4>
+      <p class="high"><%= weatherInfo.daily.data[i].temperatureMax %></p>
+      <p class="low"><%= weatherInfo.daily.data[i].temperatureMin %></p>
+    </div>
+  <% } %>
 </div>
