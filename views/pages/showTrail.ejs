@@ -9,30 +9,49 @@
   <input type="submit" value="Add to Your Trails">
 </form>
 
-<div class="trail-detail">
+<div class="trail-info">
+  <div class="trail-detail">
 <h3><strong>Elevation</strong></h3>
-<h4><%= trail.ascent %>ft</h4>
-<h4><%= trail.descent %>ft</h4>
-<h4><%= trail.high %>ft</h4>
-<h4><%= trail.low %>ft</h4>
+<h4>Ascent: <%= trail.ascent %>ft</h4>
+<h4>Descent: <%= trail.descent %>ft</h4>
+<h4>High: <%= trail.high %>ft</h4>
+<h4>Low: <%= trail.low %>ft</h4>
+</div>
 
+<div class="trial-detail">
 <h3><strong>Trail</strong></h3>
-<h4><%= trail.length %>mi</h4>
+<h4>Length: <%= trail.length %>mi</h4>
+</div>
+
+<div class="trail-weather">
+  <p>The best day to go may be </p>
+  <form action="/weather" method="POST">
+    <input type="hidden" name="lat" value="<%= trail.latitude %>">
+    <input type="hidden" name="long" value="<%= trail.longitude %>">
+    <input type="hidden" name="name" value="<%= trail.name %>">
+    <input type="submit" value="View Details">
+  </form>
+</div>
+
 </div>
 
 <div id='map' style='width: 400px; height: 300px;'></div>
 <script>
   let long = <%- Number(trail.longitude) %>;
   let lat = <%- Number(trail.latitude) %>;
-  
+  let name = <%- JSON.stringify(trail.name) %>;
+
   mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbjIwNSIsImEiOiJjazFzZXB6ZHEwMjV2M2Jtd3NhaDh6dnFqIn0.sZ7plho546gq4TBKteOPYw';  
   var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v8',
+    style: 'mapbox://styles/mapbox/streets-v11',
     center: [-96, 40.8],
   zoom: 1
   })
   map.on('load', function(){
+    // map.loadImage('', function(error, image) {
+    //   if(error) throw error;
+    //   map.addImage('dot', image)
   map.addLayer({
     "id": "points",
     "type": "symbol",
@@ -50,9 +69,12 @@
       }
     },
     "layout": {
-      "text-field": "words",
+      "text-field": name,
       "text-offset": [0, 0.6]
     }
   });
   });
+// });
 </script>
+
+<p>For more information on <%= trail.name %> click <a href="<%= trail.url %>">here</a>.</p>

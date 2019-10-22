@@ -1,9 +1,9 @@
 <h2>Here are your results for <%= query.city %>, <%= query.state %></h2>
 
 <% results.forEach(function(result) { %>
-  <div class="flex-middle">
-    <p class="inline"><%= result.name %></p>
-    <p class="inline"><%= result.lat %>, <%= result.long %> </p>
+  <div>
+    <p><%= result.name %></p>
+    <p><%= result.lat %>, <%= result.long %> </p>
     <form action="/lookup" method="POST">
       <input type="hidden" name="city" value="<%= result.name %>">
       <input type="hidden" name="lat" value="<%= result.lat %>">

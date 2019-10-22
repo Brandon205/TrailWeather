@@ -41,16 +41,11 @@ router.get('/results', function(req, res) { // Will take search items from query
   .catch(err => console.log(err));
 });
 
-router.put('/profile/:id', function(req, res) {
-  db.user.update({
-    name: req.body.name,
-    email: req.body.email
-  }, {
-    where: {
-      id: req.params.id
-    }
-  }).then(function(updatedUser) {
-    res.redirect('/profile');
+router.post('/weather', function(req, res) { // NOT RESTful but needed to keep the url a bit cleaner
+  let name = req.body.name;
+  axios.get(`${dsUrl}/${process.env.DARK_SKY_KEY}/${req.body.lat},${req.body.long}`)
+  .then(function(weatherInfo) {
+    res.render('pages/weather', { weatherInfo: weatherInfo.data, name });
   })
   .catch(err => console.log(err));
 });
@@ -66,4 +61,19 @@ router.post('/lookup', function(req, res) { // NOT RESTful but needed to keep th
     .catch(err => console.log(err));
   });
 });
+
+router.put('/profile/:id', function(req, res) {
+  db.user.update({
+    name: req.body.name,
+    email: req.body.email
+  }, {
+    where: {
+      id: req.params.id
+    }
+  }).then(function(updatedUser) {
+    res.redirect('/profile');
+  })
+  .catch(err => console.log(err));
+});
+
 module.exports = router;

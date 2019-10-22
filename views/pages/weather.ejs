@@ -1,0 +1,60 @@
+<h4>Info for <%= name %></h4>
+
+<canvas id="icon" width="100" height="100"></canvas>
+<script src="https://rawgithub.com/darkskyapp/skycons/master/skycons.js"></script>
+<script defer>
+  var expression = 'weatherInfo.currently.icon';
+  var skycons = new Skycons({"color": "black"});
+  
+  switch (expression) {
+  case 'clear-day':
+    skycons.set("icon", Skycons.CLEAR_DAY);
+    break;
+  case 'clear-night':
+    skycons.set("icon", Skycons.NIGHT);
+    break;
+  case 'rain':
+    skycons.set("icon", Skycons.RAIN);
+    break;
+  case 'snow':
+    skycons.set("icon", Skycons.SNOW);
+    break;
+  case 'sleet':
+    skycons.set("icon", Skycons.SLEET);
+    break;
+  case 'wind':
+    skycons.set("icon", Skycons.WIND);
+    break;
+  case 'fog':
+    skycons.set("icon", Skycons.FOG);
+    break;
+  case 'cloudy':
+    skycons.set("icon", Skycons.CLOUDY);
+    break;
+  case 'partly-cloudy-day':
+    skycons.set("icon", Skycons.PARTLY_CLOUDY_DAY);
+    break;
+  case 'partly-cloudy-night':
+    skycons.set("icon", Skycons.PARTLY_CLOUDY_NIGHT);
+    break;
+  default:
+    skycons.set("icon", Skycons.CLOUDY);
+  }
+  skycons.play();
+</script>
+
+<div class="info-container">
+  <div class="left">
+    <h1><%= Math.round(weatherInfo.currently.temperature) %>°F</h1>
+    <h3><%= weatherInfo.currently.summary %></h3>
+  </div>
+
+  <div class="right">
+    <h5>Wind: <%= weatherInfo.currently.windSpeed %>mph</h5>
+    <h5>Precipitation: <%= weatherInfo.currently.precipProbability * 100 %>%</h5>
+    <h5>Humidity: <%= weatherInfo.currently.humidity * 100 %>%</h5>
+  </div>
+</div>
+<div class="daily-info">
+
+</div>
