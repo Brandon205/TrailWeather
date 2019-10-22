@@ -20,12 +20,15 @@
 <h4><%= trail.length %>mi</h4>
 </div>
 
-
 <div id='map' style='width: 400px; height: 300px;'></div>
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbjIwNSIsImEiOiJjazFzZXB6ZHEwMjV2M2Jtd3NhaDh6dnFqIn0.sZ7plho546gq4TBKteOPYw';  var map = new mapboxgl.Map({
+  let long = <%- Number(trail.longitude) %>;
+  let lat = <%- Number(trail.latitude) %>;
+  
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbjIwNSIsImEiOiJjazFzZXB6ZHEwMjV2M2Jtd3NhaDh6dnFqIn0.sZ7plho546gq4TBKteOPYw';  
+  var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/light-v10',
+    style: 'mapbox://styles/mapbox/streets-v8',
     center: [-96, 40.8],
   zoom: 1
   })
@@ -41,16 +44,14 @@
           "type": "Feature",
           "geometry": {
             "type": "Point",
-            "coordinates": [<%- Number(trail.longitude) %>, <%- Number(trail.latitude) %>]
+            "coordinates": [long, lat]
           }
         }]
       }
     },
     "layout": {
       "text-field": "words",
-      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-      "text-offset": [0, 0.6],
-      "text-anchor": "top"
+      "text-offset": [0, 0.6]
     }
   });
   });
