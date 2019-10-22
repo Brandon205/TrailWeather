@@ -19,36 +19,39 @@
 <h3><strong>Trail</strong></h3>
 <h4><%= trail.length %>mi</h4>
 </div>
-<% console.log(marker); %>
 
-<div id="map" style="width: 60em; height: 35em;"></div>
 
+<div id='map' style='width: 400px; height: 300px;'></div>
 <script>
-    mapboxgl.accessToken = '<%= mapkey %>'
-    let map = new mapboxgl.Map({
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbjIwNSIsImEiOiJjazFzZXB6ZHEwMjV2M2Jtd3NhaDh6dnFqIn0.sZ7plho546gq4TBKteOPYw';  var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10',
     center: [-96, 40.8],
-    zoom: 3
-    })
-    map.on('load', function(){
-    map.addLayer({
-        "id": "points",
-        "type": "symbol",
-        "source": {
-        "type": "geojson",
-        "data": {
-            "type": "FeatureCollection",
-            "features": [<%- marker %>]
-        }
-        },
-        "layout": {
-        "icon-image": "{icon}-15",
-        "text-field": "{title}",
-        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
-        "text-offset": [0, 0.6],
-        "text-anchor": "top"
-        }
-    })
-    })
+  zoom: 1
+  })
+  map.on('load', function(){
+  map.addLayer({
+    "id": "points",
+    "type": "symbol",
+    "source": {
+      "type": "geojson",
+      "data": {
+        "type": "FeatureCollection",
+        "features": [{
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [<%- Number(trail.longitude) %>, <%- Number(trail.latitude) %>]
+          }
+        }]
+      }
+    },
+    "layout": {
+      "text-field": "words",
+      "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset": [0, 0.6],
+      "text-anchor": "top"
+    }
+  });
+  });
 </script>
