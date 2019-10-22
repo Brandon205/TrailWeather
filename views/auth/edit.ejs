@@ -1,0 +1,6 @@
+<form action="/profile/<%= currentUser.id %>/?_method=PUT" method="POST">
+<input type="text" name="name" id="name" value="<%= currentUser.name %>">
+<input type="text" name="email" id="email" value="<%= currentUser.email %>">
+
+<input type="submit" value="Edit">
+</form>

@@ -7,7 +7,8 @@ router.get('/:id', function(req, res) {
   db.user.findByPk(Number(req.params.id), { include: [db.location] })
   .then(function(user) {
     res.render('pages/locations', { user });
-  });
+  })
+  .catch(err => console.log(err));
 });
 
 // POST to /locations > add new locations to user locations list
@@ -25,7 +26,8 @@ router.post('/', function(req, res) {
     }).then(function([location, created]) {
       user.addLocation(location).then(function(data) {
         res.redirect(`/locations/${user.id}`);
-      });
+      })
+      .catch(err => console.log(err));
     });
   });
 });
@@ -39,7 +41,8 @@ router.delete('/:id', function(req, res) {
     }
   }).then(function(delLocation) {
     res.redirect(`/locations/${Number(req.body.id)}`);
-  });
+  })
+  .catch(err => console.log(err));
 });
 
 module.exports = router;

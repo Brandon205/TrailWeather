@@ -16,7 +16,7 @@ router.get('/home', function(req, res) { // Shows the main home page
 });
 
 router.get('/edit', function(req, res) {
-  
+  res.render('auth/edit');
 });
 
 router.get('/search', function(req, res) { // Shows a from for searching locations
@@ -37,7 +37,22 @@ router.get('/results', function(req, res) { // Will take search items from query
       };
     });
     res.render('pages/results', { query: req.query, results });
-  });
+  })
+  .catch(err => console.log(err));
+});
+
+router.put('/profile/:id', function(req, res) {
+  db.user.update({
+    name: req.body.name,
+    email: req.body.email
+  }, {
+    where: {
+      id: req.params.id
+    }
+  }).then(function(updatedUser) {
+    res.redirect('/profile');
+  })
+  .catch(err => console.log(err));
 });
 
 router.post('/lookup', function(req, res) { // NOT RESTful but needed to keep the url a bit cleaner
@@ -47,7 +62,8 @@ router.post('/lookup', function(req, res) { // NOT RESTful but needed to keep th
     axios.get(`${hpUrl}/get-trails?lat=${req.body.lat}&lon=${req.body.long}&maxDistance=10&key=${process.env.HIKING_PROJECT_KEY}`)
     .then(function(trailInfo) {
       res.render('pages/lookup', { weatherInfo: weatherInfo.data, trails: trailInfo.data.trails, locName });
-    });
+    })
+    .catch(err => console.log(err));
   });
 });
 module.exports = router;
