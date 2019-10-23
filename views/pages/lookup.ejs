@@ -70,8 +70,8 @@
     <% let day = date.match(regex) %>
     <div>
       <h4><%= day %></h4>
-      <p class="high"><%= Math.round(weatherInfo.daily.data[i].temperatureMax) %></p>
-      <p class="low"><%= Math.round(weatherInfo.daily.data[i].temperatureMin) %></p>
+      <p class="high"><%= Math.round(weatherInfo.daily.data[i].temperatureMax) %>°F</p>
+      <p class="low"><%= Math.round(weatherInfo.daily.data[i].temperatureMin) %>°F</p>
     </div>
   <% } %>
 </div>
@@ -79,18 +79,20 @@
 <div class="trail-container">
   <% trails.forEach(function(trail) { %>
     <div class="trail">
-    <h2 class="inline"><%= trail.name %></h4>
-    <form action="/trails/show/<%= trail.id %>">
-      <input class="trail-submit" type="submit" value="View Trail Details">
-    </form>
-    <form action="/trails" method="POST">
-      <input type="hidden" name="id" value="<%= currentUser.id %>">
-      <input type="hidden" name="name" value="<%= trail.name %>">
-      <input type="hidden" name="idnum" value="<%= trail.id %>">
-      <input type="hidden" name="lat" value="<%= trail.latitude %>">
-      <input type="hidden" name="long" value="<%= trail.longitude %>">
-      <input class="trail-submit" type="submit" value="Add to Your Trails">
-    </form>
+      <h3 class="inline"><%= trail.name %></h3>
+      <div>
+        <form action="/trails/show/<%= trail.id %>">
+          <input class="trail-submit" type="submit" value="View Trail Details">
+        </form>
+        <form action="/trails" method="POST">
+          <input type="hidden" name="id" value="<%= currentUser.id %>">
+          <input type="hidden" name="name" value="<%= trail.name %>">
+          <input type="hidden" name="idnum" value="<%= trail.id %>">
+          <input type="hidden" name="lat" value="<%= trail.latitude %>">
+          <input type="hidden" name="long" value="<%= trail.longitude %>">
+          <input class="trail-submit" type="submit" value="Add to Your Trails">
+        </form>
+      </div>
   </div>
   <% }); %>
 </div>

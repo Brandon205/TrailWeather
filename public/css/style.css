@@ -109,10 +109,9 @@ footer {
 
 .info-container {
   width: 95%;
-  padding: 10px auto;
   background: rgba(115, 115, 115, 0.93);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 15px;
   border-radius: 25px;
   box-shadow: 0 5px 10px;
@@ -131,15 +130,20 @@ footer {
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .trail {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin: 10px 0;
+  border: 2px solid whitesmoke;
+  border-radius: 25px;
+  background-color: rgb(115, 115, 115);
+  box-shadow: 0 5px 8px black;
+  max-width: 350px;
 }
 
 .left, .right {
