@@ -118,6 +118,11 @@ footer {
   box-shadow: 0 5px 10px;
 }
 
+.daily-info {
+  display: flex;
+  justify-content: space-around;
+}
+
 .trail-container {
   width: 95%;
   background: rgba(115, 115, 115, 0.93);
@@ -134,6 +139,7 @@ footer {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .left, .right {
@@ -212,5 +218,4 @@ footer {
   #title {
     font-size: 2.2em;
   }
-
 }

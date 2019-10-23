@@ -21,3 +21,9 @@ Today I got back to work on adding extra information to the details pages, and m
 
 ## Day 5 
 My main focus today was to get the rest of the page details done with along with any other RESTful links that I need to include ex. in /trails/:id I needed to add a link to add trails to the users list. And here was when I found out that I had slightly messed up the way that I added and therefore displayed locations and trails. Both of them weren't correlated to a user at all, so if you were to sign in as someone else you would still have the same locations and trails saved. To fix this I had to rewrite the routes for those things completly and this time make use of ```javascript { include: [db.location] }``` and get/add Trails/Locations. Which was a bit rough just because getting the user ID into the route was something I wanted to keep somewhat secret, but ended up passing in through the url, just because this is a small project and the id's are all different but not very unique.
+
+## Day 6
+After fixing the issues yesterday I started working on what I had planned yesterday, which was to add extra details to all of the pages and lightly style them before really styling them tomorrow. This wasn't too bad the only real issue I had was getting Mapbox to work correctly, by the end of the day I had it displaying the trail name where it was supposed to, but I could not get a dot or icon to display after trying for quite some time. I do believe that I am close to having it working, all I need is a marker image to display and it should work I hope. Now that all of the info I need from the API's are displaying, I'm going to add on to my 220 lines of CSS and make things look exactly the way I want.
+
+## Day 7 
+As said before today is all styling, along with fixing anything that I can find UX-wise. This took quite some time and a whole lot more code, but it is good to know that my site is 100% responsive and looks decent.

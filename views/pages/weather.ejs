@@ -57,7 +57,7 @@
 </div>
 <div class="info-container">
   <% let regex = /^(\w{3})/g %>
-  <% for (let i = 0; i < 4; i++) { %>
+  <% for (let i = 0; i < 5; i++) { %>
     <% let date = new Date(weatherInfo.daily.data[i].time * 1000).toString(); %>
     <% let day = date.match(regex) %>
     <div>
