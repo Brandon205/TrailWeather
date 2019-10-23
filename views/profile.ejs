@@ -1,4 +1,11 @@
 <h2>Your Profile</h2>
 <h2><%= currentUser.name %></h2>
 
-<button><a href="/edit">Edit Profile</a></button>
+<% let reg = /^(.{1,7})(.{1,})/ %>
+<% let email = currentUser.email %>
+<% let hidden = email.replace(reg, '$2', 'x') %>
+<h2> *******<%= hidden %></h2>
+
+<form action="/edit" method="GET">
+  <input class="submit" type="submit" value="Edit Profile">
+</form>

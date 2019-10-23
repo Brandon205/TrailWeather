@@ -1,11 +1,11 @@
-<h2>Your Trails</h2>
+<h1>Your Trails</h1>
 <% user.trails.forEach(function(trail) { %>
-  <div>
-  <h3><a href="show/<%= trail.idnum %>"><%= trail.name %></a></h3>
+  <div class="container">
+  <a class="trailname" href="show/<%= trail.idnum %>"><%= trail.name %></a>
 
   <form action="/trails/<%= trail.idnum %>/?_method=DELETE" method="POST">
     <input type="hidden" name="id" value="<%= currentUser.id %>">
-    <input type="submit" value="Remove from List">
+    <input type="submit" class="submit" value="Remove from List">
   </form>
 </div>
 <% }); %>

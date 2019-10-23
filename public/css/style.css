@@ -32,6 +32,7 @@ footer div a {
 }
 
 form {
+  margin-top: 15px;
   text-align: center;
 }
 
@@ -48,6 +49,7 @@ form {
   padding: 0 15px;
   min-width: 300px;
   box-shadow: 0 5px 15px black;
+  text-align: center;
 }
 
 .text-center {
@@ -75,6 +77,17 @@ form {
 .trail-info {
   display: flex;
   justify-content: space-between;
+}
+
+.trailname {
+  text-decoration: none;
+  font-size: 2em;
+  color: black;
+  font-weight: bolder;
+}
+
+.trailname:hover {
+  color: tomato;
 }
 
 .mobile {
@@ -191,6 +204,13 @@ form {
 
 .trail-submit:hover {
   background-color: rgb(211, 80, 56);
+}
+
+.add-submit {
+  padding: 10px;
+  background-color: tomato;
+  border: none;
+  margin-bottom: 10px;
 }
 
 .text-align {

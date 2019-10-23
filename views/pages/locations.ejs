@@ -1,18 +1,18 @@
 <h2>Your Locations</h2>
 
 <% user.locations.forEach(function(location) { %>
-  <div>
+  <div class="container">
     <h3><%= location.city %></h3>
     <h4><%= location.lat %>, <%= location.long %></h4>
     <form action="/locations/<%= location.lat %>/?_method=DELETE" method="POST">
       <input type="hidden" name="id" value="currentUser.id">
-      <input type="submit" value="Delete">
+      <input type="submit" class="submit" value="Delete">
     </form>
     <form action="/lookup" method="POST">
       <input type="hidden" name="city" value="<%= location.city %>">
       <input type="hidden" name="lat" value="<%= location.lat %>">
       <input type="hidden" name="long" value="<%= location.long %>">
-      <input type="submit" value="View Details">
+      <input type="submit" class="submit" value="View Details">
     </form>
   </div>
 <% }) %>

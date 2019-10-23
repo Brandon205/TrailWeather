@@ -6,20 +6,20 @@
   <input type="hidden" name="id" value="<%= currentUser.id %>">
   <input type="hidden" name="name" value="<%= trail.name %>">
   <input type="hidden" name="idnum" value="<%= trail.id %>">
-  <input type="submit" value="Add to Your Trails">
+  <input class="add-submit" type="submit" value="Add to Your Trails">
 </form>
 
 <div class="info-container trail-info">
-  <div class="trail-detail">
-    <h3><strong>Elevation</strong></h3>
+  <div>
+    <h3>Elevation</h3>
     <h4>Ascent: <%= trail.ascent %>ft</h4>
     <h4>Descent: <%= trail.descent %>ft</h4>
     <h4>High: <%= trail.high %>ft</h4>
     <h4>Low: <%= trail.low %>ft</h4>
   </div>
 
-  <div class="trial-detail">
-    <h3><strong>Trail</strong></h3>
+  <div>
+    <h3>Trail Details</h3>
     <h4>Length: <%= trail.length %>mi</h4>
     <h4>Difficulty: <%= trail.difficulty %> </h4>
   </div>
@@ -30,16 +30,16 @@
       <input type="hidden" name="lat" value="<%= trail.latitude %>">
       <input type="hidden" name="long" value="<%= trail.longitude %>">
       <input type="hidden" name="name" value="<%= trail.name %>">
-      <input id="submit" type="submit" value="View Details">
+      <input class="submit" type="submit" value="View Details">
     </form>
   </div>
 </div>
 
 <div id='map' style='width: 400px; height: 300px;'></div>
 <script>
-  let long = <%- Number(trail.longitude); %>
-  let lat = <%- Number(trail.latitude); %>
-  let name = <%- JSON.stringify(trail.name); %>
+  let long = <%- Number(trail.longitude) %>;
+  let lat = <%- Number(trail.latitude) %>;
+  let name = <%- JSON.stringify(trail.name) %>;
 
   mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhbmRvbjIwNSIsImEiOiJjazFzZXB6ZHEwMjV2M2Jtd3NhaDh6dnFqIn0.sZ7plho546gq4TBKteOPYw';  
   var map = new mapboxgl.Map({
