@@ -5,7 +5,7 @@
   <input type="hidden" name="city" value="<%= locName %>">
   <input type="hidden" name="lat" value="<%= weatherInfo.latitude %>">
   <input type="hidden" name="long" value="<%= weatherInfo.longitude %>">
-  <input type="submit" value="Add to Your Locations">
+  <input class="trail-submit" type="submit" value="Add to Your Locations">
 </form>
 
 <canvas id="icon" width="100" height="100"></canvas>
@@ -79,7 +79,7 @@
 <div class="trail-container">
   <% trails.forEach(function(trail) { %>
     <div class="trail">
-      <h3 class="inline"><%= trail.name %></h3>
+      <h3><%= trail.name %></h3>
       <div>
         <form action="/trails/show/<%= trail.id %>">
           <input class="trail-submit" type="submit" value="View Trail Details">

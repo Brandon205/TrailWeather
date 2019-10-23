@@ -57,11 +57,6 @@ form {
   justify-content: flex-start;
 }
 
-.search {
-  padding: 10px;
-  border-radius: 10%;
-}
-
 .footer-atag {
   text-decoration: none;
   font-size: 1.1em;
@@ -145,7 +140,15 @@ form {
   border-radius: 25px;
   background-color: rgb(115, 115, 115);
   box-shadow: 0 5px 8px black;
-  max-width: 350px;
+  width: 350px;
+}
+
+.trail h3 {
+  margin-left: 10px;
+}
+
+.trail div div{
+  margin-right: 10px;
 }
 
 .left, .right {
@@ -161,9 +164,10 @@ form {
   background-color: rgba(255, 255, 255, 0.75);
   width: 300px;
   border: 2px solid white;
-  padding: 10px;
+  padding: 8px;
   margin-bottom: 15px;
   text-align: center;
+  font-size: 1em;
 }
 
 .submit {
@@ -171,11 +175,26 @@ form {
   padding: 10px;
   background-color: tomato;
   border: none;
+  margin-bottom: 10px;
 }
 
 .submit:hover {
   background-color: rgb(211, 80, 56);
-  color: black;
+}
+
+.trail-submit {
+  padding: 5px;
+  background-color: tomato;
+  border: none;
+  margin: 5px 15px 5px 0;
+}
+
+.trail-submit:hover {
+  background-color: rgb(211, 80, 56);
+}
+
+.text-align {
+  text-align: center;
 }
 
 #map {

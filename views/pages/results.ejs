@@ -1,14 +1,14 @@
 <h2>Here are your results for <%= query.city %>, <%= query.state %></h2>
 
 <% results.forEach(function(result) { %>
-  <div>
+  <div class="container">
     <p><%= result.name %></p>
     <p><%= result.lat %>, <%= result.long %> </p>
     <form action="/lookup" method="POST">
       <input type="hidden" name="city" value="<%= result.name %>">
       <input type="hidden" name="lat" value="<%= result.lat %>">
       <input type="hidden" name="long" value="<%= result.long %>">
-      <input type="submit" value="View Details">
+      <input class="submit" type="submit" value="View Details">
     </form>
   </div>
 <% }) %>
