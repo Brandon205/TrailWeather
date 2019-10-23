@@ -26,4 +26,10 @@ My main focus today was to get the rest of the page details done with along with
 After fixing the issues yesterday I started working on what I had planned yesterday, which was to add extra details to all of the pages and lightly style them before really styling them tomorrow. This wasn't too bad the only real issue I had was getting Mapbox to work correctly, by the end of the day I had it displaying the trail name where it was supposed to, but I could not get a dot or icon to display after trying for quite some time. I do believe that I am close to having it working, all I need is a marker image to display and it should work I hope. Now that all of the info I need from the API's are displaying, I'm going to add on to my 220 lines of CSS and make things look exactly the way I want.
 
 ## Day 7 
-As said before today is all styling, along with fixing anything that I can find UX-wise. This took quite some time and a whole lot more code, but it is good to know that my site is 100% responsive and looks decent.
+As said before today is all styling, along with fixing anything that I can find UX-wise. This took not as long as I first expected because of the similarities on my site for example there are a lot of submit buttons therefore I can style those all the same just by using the class. The hard part here was just making up a color scheme, and sizing everything correctly, also flexbox is a savior.
+
+## Day 8
+Because we are presenting today I planned to use all of the morning to test and debug along with try to take on the small list of todo's that I made up while testing, no big changes were made, it was mostly just making sure that things worked the way they should.
+
+## The future plans
+I have been making a list of things I want to add post cohort, some of those things include a better search bar, which will instead of redirect you to a search form it will just be a bar up at the top that will allow you to search a city and state separated by a comma. Another idea I have is to add a Skycon to each of the daily weather tabs, I think this will make it look a bit better and give the user more of a summary than just the highs and lows of the day can. 
