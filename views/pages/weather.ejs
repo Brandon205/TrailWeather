@@ -63,8 +63,8 @@
     <% let day = date.match(regex) %>
     <div>
       <h4><%= day %></h4>
-      <p class="high"><%= Math.round(weatherInfo.daily.data[i].temperatureMax)°F %></p>
-      <p class="low"><%= Math.round(weatherInfo.daily.data[i].temperatureMin)°F %></p>
+      <p class="high"><%= Math.round(weatherInfo.daily.data[i].temperatureMax) %>°F</p>
+      <p class="low"><%= Math.round(weatherInfo.daily.data[i].temperatureMin) %>°F</p>
     </div>
   <% } %>
 

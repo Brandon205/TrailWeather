@@ -13,7 +13,7 @@ router.get('/:id', function(req, res) { // GET to /trails > show all of the user
   .catch(err => console.log(err));
 });
 
-router.get('/show/:id', function(req, res) {
+router.get('/show/:id', function(req, res) { // GET to /show/:id that will display details on a specific trail
   axios.get(`${hpUrl}/get-trails-by-id?ids=${Number(req.params.id)}&key=${process.env.HIKING_PROJECT_KEY}`)
   .then(function(trail) {
     res.render('pages/showTrail', { trail: trail.data.trails[0], mapkey: process.env.MAPBOX_KEY });

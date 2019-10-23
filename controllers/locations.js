@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
-// GET to /locations > show all of the users saved locations
-router.get('/:id', function(req, res) {
+router.get('/:id', function(req, res) { // GET to /locations > show all of the users saved locations
   db.user.findByPk(Number(req.params.id), { include: [db.location] })
   .then(function(user) {
     res.render('pages/locations', { user });
@@ -11,8 +10,7 @@ router.get('/:id', function(req, res) {
   .catch(err => console.log(err));
 });
 
-// POST to /locations > add new locations to user locations list
-router.post('/', function(req, res) {
+router.post('/', function(req, res) { // POST to /locations > add new locations to user locations list
   db.user.findByPk(Number(req.body.id))
   .then(function(user) {
     db.location.findOrCreate({
@@ -32,8 +30,7 @@ router.post('/', function(req, res) {
   });
 });
 
-// DELETE to /locations > remove the correct location from the users location list
-router.delete('/:id', function(req, res) {
+router.delete('/:id', function(req, res) { // DELETE to /locations > remove the correct location from the users location list
   let num = req.params.id;
   db.location.destroy({
     where: {
