@@ -31,6 +31,10 @@ footer div a {
   margin: 0 10px;
 }
 
+form {
+  text-align: center;
+}
+
 .trail-detail {
   display: flex;
   flex-direction: column;
@@ -105,15 +109,6 @@ footer div a {
   cursor: pointer;
 }
 
-.mobile a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.inline {
-  display: inline-block;
-}
-
 .info-container {
   width: 95%;
   background: rgba(115, 115, 115, 0.93);
@@ -160,6 +155,27 @@ footer div a {
 
 .pacifico {
   font-family: 'Pacifico', cursive;
+}
+
+.text-input {
+  background-color: rgba(255, 255, 255, 0.75);
+  width: 300px;
+  border: 2px solid white;
+  padding: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.submit {
+  width: 100px;
+  padding: 10px;
+  background-color: tomato;
+  border: none;
+}
+
+.submit:hover {
+  background-color: rgb(211, 80, 56);
+  color: black;
 }
 
 #map {
