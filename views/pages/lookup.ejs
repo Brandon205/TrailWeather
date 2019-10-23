@@ -64,7 +64,16 @@
   </div>
 </div>
 <div class="daily-info">
-
+  <% let regex = /^(\w{3})/g %>
+  <% for (let i = 0; i < 4; i++) { %>
+    <% let date = new Date(weatherInfo.daily.data[i].time * 1000).toString(); %>
+    <% let day = date.match(regex) %>
+    <div>
+      <h4><%= day %></h4>
+      <p class="high"><%= Math.round(weatherInfo.daily.data[i].temperatureMax) %></p>
+      <p class="low"><%= Math.round(weatherInfo.daily.data[i].temperatureMin) %></p>
+    </div>
+  <% } %>
 </div>
 
 <div class="trail-container">
