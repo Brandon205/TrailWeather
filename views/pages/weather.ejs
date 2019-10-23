@@ -47,6 +47,7 @@
   <div class="left">
     <h1><%= Math.round(weatherInfo.currently.temperature) %>°F</h1>
     <h3><%= weatherInfo.currently.summary %></h3>
+    <p><%= weatherInfo.daily.summary %></p>
   </div>
 
   <div class="right">
@@ -66,4 +67,5 @@
       <p class="low"><%= Math.round(weatherInfo.daily.data[i].temperatureMin) %></p>
     </div>
   <% } %>
+
 </div>

@@ -9,10 +9,6 @@ body {
   font-size: .93em;
 }
 
-nav div h2 {
-  display: inline-block;
-}
-
 main {
   display: flex;
   flex-direction: column;
@@ -22,9 +18,17 @@ main {
 }
 
 footer {
-  margin-left: 10px;
-  margin-bottom: 10px;
+  width: 100vw;
+  height: 30px;
   flex-shrink: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer div a {
+  margin: 0 10px;
 }
 
 .trail-detail {
@@ -54,11 +58,14 @@ footer {
   border-radius: 10%;
 }
 
-.right-atag {
-  float: right;
+.footer-atag {
   text-decoration: none;
   font-size: 1.1em;
-  color: black;
+  color: white;
+}
+
+.footer-atag:hover {
+  color: tomato;
 }
 
 .trail-img {
@@ -148,9 +155,10 @@ footer {
 
 .left, .right {
   margin: 15px 10px;
+  max-width: 250px;
 }
 
-.pacifico span{
+.pacifico {
   font-family: 'Pacifico', cursive;
 }
 
@@ -166,11 +174,11 @@ footer {
   font-family: 'Pacifico', cursive;
   font-size: 17px;
   text-decoration: none;
-  color: black;
+  color: tomato;
 }
 
 #title:hover {
-  color: tomato;
+  color: black;
 }
 
 @media screen and (min-width: 870px) {
