@@ -46,12 +46,9 @@
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [-96, 40.8],
-  zoom: 1
-  })
-  map.on('load', function(){
-    // map.loadImage('', function(error, image) {
-    //   if(error) throw error;
-    //   map.addImage('dot', image)
+  zoom: 2
+  });
+  map.on('load', function () {
   map.addLayer({
     "id": "points",
     "type": "symbol",
@@ -69,12 +66,14 @@
       }
     },
     "layout": {
+      "icon-image": "mountain-15",
+      "icon-size": 1.25,
       "text-field": name,
-      "text-offset": [0, 0.6]
+      "text-anchor": "top",
+      "text-offset": [0, .7]
     }
   });
   });
-// });
 </script>
 
 <p>For more information on <%= trail.name %> click <a href="<%= trail.url %>">here</a>.</p>
